@@ -17,15 +17,6 @@ const Navbar = () => {
 
           <div className="hidden items-center space-x-4 sm:flex">
             <>
-              <Link
-                href="/pricing"
-                className={buttonVariants({
-                  variant: "ghost",
-                  size: "sm",
-                })}
-              >
-                Pricing
-              </Link>
               <LoginLink
                 className={buttonVariants({
                   variant: "ghost",
@@ -39,7 +30,7 @@ const Navbar = () => {
                   size: "sm",
                 })}
               >
-                Get Started <ArrowRight className="ml-1.5 h-5 w-5" />
+                Sign Up <ArrowRight className="ml-1.5 h-5 w-5" />
               </RegisterLink>
             </>
           </div>
