@@ -9,7 +9,7 @@ import { getPineconeClientIndex } from "@/lib/pinecone";
 const f = createUploadthing();
 
 export const ourFileRouter = {
-  pdfUploader: f({ pdf: { maxFileSize: "4MB" } })
+  pdfUploader: f({ pdf: { maxFileSize: "16MB" } })
     .middleware(async ({ req }) => {
       const { getUser } = getKindeServerSession();
       const user = getUser();
@@ -19,6 +19,11 @@ export const ourFileRouter = {
       return { userId: user.id };
     })
     .onUploadComplete(async ({ metadata, file }) => {
+      const isFileExist = await db.file.findFirst({
+        where: { key: file.key }
+      })
+      if (isFileExist) return
+
       const createdFile = await db.file.create({
         data: {
           key: file.key,
@@ -41,6 +46,20 @@ export const ourFileRouter = {
         const pageLevelDocs = await loader.load();
         const pagesAmt = pageLevelDocs.length;
 
+        // checking length of uploaded pdf files
+        const pagesPerPDF = 25
+        let isLengthExceeded = pagesAmt > pagesPerPDF
+
+        if (isLengthExceeded) {
+          await db.file.update({
+            data: {
+              uploadStatus: 'FAILED'
+            },
+            where: { id: createdFile.id }
+          })
+        }
+
+
         // vectorize and index entire document
         const pineconeIndex = await getPineconeClientIndex()
 
@@ -53,14 +72,11 @@ export const ourFileRouter = {
           // namespace: createdFile.id,
         });
 
-        console.log('Kak')
-
         await db.file.update({
           data: { uploadStatus: "SUCCESS" },
           where: { id: createdFile.id },
         });
       } catch (error) {
-        console.log(error)
         await db.file.update({
           data: { uploadStatus: "FAILED" },
           where: { id: createdFile.id },
