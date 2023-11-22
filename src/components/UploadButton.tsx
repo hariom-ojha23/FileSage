@@ -14,7 +14,7 @@ import { useRouter } from "next/navigation";
 const UploadDropzone = () => {
   const router = useRouter()
 
-  const [isUploading, setIsLoading] = useState<boolean>(false)
+  const [isUploading, setIsUploading] = useState<boolean>(false)
   const [uploadProgress, setUploadProgress] = useState<number>(0)
 
   const { toast } = useToast()
@@ -46,7 +46,7 @@ const UploadDropzone = () => {
   }
 
   const onDrop = async (acceptedFiles: File[]) => {
-    setIsLoading(true)
+    setIsUploading(true)
     const progressInterval = startSimulatedProgress()
 
     // handle file uploading

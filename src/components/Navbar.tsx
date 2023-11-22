@@ -24,9 +24,8 @@ const Navbar = () => {
               src='/filesage.svg'
               quality={100}
               width={150}
-              height={80}
-              alt="application-logo mt-2"
-              className=""
+              height={100}
+              alt="application-logo"
             />
           </Link>
 
