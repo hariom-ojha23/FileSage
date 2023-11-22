@@ -21,7 +21,7 @@ const Navbar = () => {
         <div className="flex h-14 items-center justify-between border-b border-zinc-200">
           <Link href="/" className="flex x-40 font-semibold">
             <Image
-              src='/filesage.png'
+              src='/filesage.svg'
               quality={100}
               width={150}
               height={80}
