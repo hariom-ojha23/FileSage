@@ -53,10 +53,10 @@ export default function Home() {
                   <Image
                     src="/dashboard-preview.jpg"
                     quality={100}
-                    width={1364}
-                    height={866}
+                    width={1920}
+                    height={1080}
                     alt="product-preview"
-                    className="rounded-md bg-white p-2 sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10"
+                    className="rounded-md bg-white p-2 sm:p-8 md:p-15 shadow-2xl ring-1 ring-gray-900/10"
                   />
                 </div>
               </div>
@@ -98,8 +98,7 @@ export default function Home() {
               <span className="text-sm font-medium text-blue-600">Step 1</span>
               <span className="text-xl font-semibold">Sign up for an account</span>
               <span className="mt-2 text-zinc-700">
-                Either starting out with a free plan or choose our{' '}
-                <Link href='/pricing' className="text-blue-700 underline underline-offset-2">pro plan</Link>.
+                Create an account using your first name, last name & email address
               </span>
             </div>
           </li>
@@ -129,10 +128,10 @@ export default function Home() {
               <Image
                 src="/file-upload-preview.jpg"
                 quality={100}
-                width={1419}
-                height={732}
+                width={1546}
+                height={885}
                 alt="uploading-preview"
-                className="rounded-md bg-white p-2 sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10"
+                className="rounded-md bg-white p-2 sm:p-8 md:p-15 shadow-2xl ring-1 ring-gray-900/10"
               />
             </div>
           </div>

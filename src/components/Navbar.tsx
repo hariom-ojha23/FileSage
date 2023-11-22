@@ -9,6 +9,7 @@ import {
 import { ArrowRight } from "lucide-react";
 import UserAccountNav from "./UserAccountNav";
 import MobileNav from "./MobileNav";
+import Image from "next/image";
 
 const Navbar = () => {
   const { getUser } = getKindeServerSession();
@@ -19,7 +20,14 @@ const Navbar = () => {
       <MaxWidthWrapper>
         <div className="flex h-14 items-center justify-between border-b border-zinc-200">
           <Link href="/" className="flex x-40 font-semibold">
-            <span>FileSage</span>
+            <Image
+              src='/filesage.png'
+              quality={100}
+              width={150}
+              height={80}
+              alt="application-logo mt-2"
+              className=""
+            />
           </Link>
 
           {/* Navbar for smaller screens */}
